@@ -1,0 +1,53 @@
+{
+    "Europe": {
+        "France": {
+            "Brittany": {
+                "Côtes-d'Armor": {
+                    "Trestraou": ["trestraou", "584204204e65fad6a7709044"],
+                    "Cap Frehel": ["cap-frehel", "584204204e65fad6a7709041"]
+                },
+                "Finistère": {
+                    "La Gamelle": ["la-gamelle", "584204204e65fad6a7709013"],
+                    "Pointe de Lervily": ["pointe-de-lervily", "584204204e65fad6a770900f"],
+                    "Anse de Pen Hat": ["anse-de-pen-hat", "584204204e65fad6a7709008"], 
+                    "Kerloch": ["kerloch", "584204204e65fad6a7709005"],
+                    "Pointe de Dinan": ["pointe-de-dinan", "584204204e65fad6a7709006"],
+                    "Cap de la Chevre": ["cap-de-la-chevre", "584204204e65fad6a770900a"],
+                    "La Palue": ["la-palue", "584204204e65fad6a7709009"],
+                    "Les Roches Blanches": ["les-roches-blanches", "584204204e65fad6a770900b"],
+                    "Saint Tugen": ["saint-tugen", "584204204e65fad6a7709010"],
+                    "Kerlouan": ["kerlouan", "584204204e65fad6a7709048"],
+                    "Le Gouerou": ["le-gouerou", "584204204e65fad6a770904a"],
+                    "Penfoul": ["penfoul", "584204204e65fad6a7709049"],
+                    "Les Blancs Sablons": ["les-blancs-sablons", "584204204e65fad6a770904c"],
+                    "Locquirec": ["locquirec", "584204204e65fad6a7709045"],
+                    "Lesconil": ["lesconil", "584204204e65fad6a7709014"],
+                    "Baie des Trepasses": ["baie-des-trepasses", "584204204e65fad6a770900e"],
+                    "Pors Theolen": ["pors-theolen", "584204204e65fad6a770900d"],
+                    "La Torche": ["la-torche", "5842041f4e65fad6a7708c8b"],
+                    "Pors Carn": ["pors-carn", "584204204e65fad6a7709015"],
+                    "Pors ar Vag": ["pors-ar-vag", "584204204e65fad6a770900c"],
+                    "Porsmilin": ["porsmilin", "584204204e65fad6a7709003"],
+                    "Gwendrez": ["gwendrez", "584204204e65fad6a7709012"],
+                    "Dalbosc": ["dalbos", "584204204e65fad6a7709004"],
+                    "Le Petit Minou": ["le-petit-minou", "584204204e65fad6a7709007"],
+                    "Dossen": ["dossen", "584204204e65fad6a7709046"],
+                    "La Mauvaise Greve": ["la-mauvaise-greve", "584204204e65fad6a7709047"]
+                },
+                "Morbihan": {
+                    "Guidel": ["guidel", "584204204e65fad6a7709017"],
+                    "Le Kerou": ["le-kerou", "584204204e65fad6a7709016"],
+                    "Toulhars": ["toulhars", "584204204e65fad6a770901c"],
+                    "Donnant": ["donnant", "584204204e65fad6a770901e"], 
+                    "Kaolins": ["kaolins", "584204204e65fad6a7709019"],
+                    "Cote Sauvage": ["cote-sauvage", "584204204e65fad6a770901a"],
+                    "Etel": ["etel", "584204204e65fad6a770901b"]
+                },
+                "Ille-et-Vilaine": {
+                    "Longchamps": ["longchamps", "584204204e65fad6a7709043"],
+                    "Le Sillon": ["le-sillon", "584204204e65fad6a7709042"]
+                }
+            }
+        }
+    }
+}

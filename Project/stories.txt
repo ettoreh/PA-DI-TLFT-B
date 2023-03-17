@@ -1,0 +1,77 @@
+- greetings
+- small talks
+- if surf report 
+    - spot 
+    - date 
+    - look on surf report for picture and comment about 
+    - if not found
+        - spot not in list 
+        - no report this day
+            - link to last report day
+
+- if currrent surf forecast 
+    - if wave / wind / tides / weather
+    - spot 
+    - look surfline for todays condition 
+        - wave, wind, tides, weather + comment
+    - look api for todays condition 
+        - wave, wind, tides, weather
+
+- if surf forecast 
+    - if wave / wind / tides / weather
+    - spot 
+    - date (period)
+    - look surfline for todays condition 
+        - wave, wind, tides, weather + comment
+    - look api for todays condition 
+        - wave, wind, tides, weather
+
+- if real time buoy
+
+
+- greetings
+- small talks
+- location (most important spot)
+    - report 
+        - tides
+            - all
+            - next high 
+            - next low
+        - sunlight
+            - all
+            - dawn
+            - sunrise
+            - sunset
+            - dusk
+        - weather (type or description)
+            - now
+            - rest of the day
+        - wind (type or description)
+            - now
+            - rest of the day
+        - waves (type or description)
+            - now
+            - rest of the day
+        - swells (type or description)
+            - now
+            - rest of the day
+    - forecast (tomorrow or day after tomorrow)
+        - TO DO
+        
+
+
+- look for it 
+    - not found: ask precision about loaction or/and give a list of choices
+    - found: 
+        - text small report 
+        - visualization of day forecast 
+        - link to website 
+
+- report (today) or forecast (two next days)
+- wave or wind or tides or weather 
+- scores 
+- is there a better place ? 
+
+https://giocaizzi.github.io/pysurfline/_autosummary/pysurfline.utils.html
+https://pypi.org/project/NDBC/
+https://www.surfline.com/surf-report/le-petit-minou/584204204e65fad6a7709007

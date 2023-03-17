@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="file:wildlife.owl"
+         xmlns="file:wildlife.owl#">
+
+<owl:Ontology rdf:about="file:wildlife.owl">
+  <owl:VersionInfo>Version of March 16, 2021</owl:VersionInfo>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#eats">
+  <owl:inverseOf rdf:resource="#is-eaten-by"/>
+  <rdfs:domain rdf:resource="#animal"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#is-eaten-by"/>
+
+<owl:ObjectProperty rdf:about="#is-part-of">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#size"/>
+
+<owl:DatatypeProperty rdf:about="#weight">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+
+<owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#Class"/>
+
+<owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#VersionInfo"/>
+
+<owl:AnnotationProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#parsetype"/>
+
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#onProperty"/>
+
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#allValuesFrom"/>
+
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#unionOf"/>
+
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Nothing"/>
+
+<owl:Class rdf:about="#animal">
+  <owl:disjointWith rdf:resource="#branch"/>
+  <owl:disjointWith rdf:resource="#leaf"/>
+  <owl:disjointWith rdf:resource="#plant"/>
+  <rdfs:comment>Animals are a class</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#branch">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#is-part-of"/>
+      <owl:someValuesFrom rdf:resource="#tree"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:disjointWith rdf:resource="#leaf"/>
+  <owl:disjointWith rdf:resource="#plant"/>
+  <owl:disjointWith rdf:resource="#tree"/>
+  <rdfs:comment>Branches are parts of trees</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#leaf">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#is-part-of"/>
+      <owl:someValuesFrom rdf:resource="#branch"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:disjointWith rdf:resource="#tree"/>
+  <rdfs:comment>Leaves are parts of branches</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#plant">
+  <owl:incompatibleWith>Plants are a class disjoint from animals</owl:incompatibleWith>
+</owl:Class>
+
+<owl:Class rdf:about="#tree">
+  <rdfs:subClassOf rdf:resource="#plant"/>
+  <rdfs:comment>Trees are a kind of plants</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#carnivore">
+  <rdfs:subClassOf rdf:resource="#animal"/>
+  <rdfs:comment>Carnivores are exactly those animals that eat also animals</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#edible-plant">
+  <rdfs:subClassOf rdf:resource="#plant"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#is-eaten-by"/>
+      <owl:someValuesFrom rdf:resource="#carnivore"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#is-eaten-by"/>
+      <owl:someValuesFrom rdf:resource="#herbivore"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment>Edible plants are plant that are eaten by carnivores and herbivores</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#herbivore">
+  <rdfs:subClassOf rdf:resource="#animal"/>
+  <rdfs:comment>Herbivores are exactly those animals that eat only plants or parts of plants</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#giraffe">
+  <rdfs:subClassOf rdf:resource="#herbivore"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#eats"/>
+      <owl:allValuesFrom rdf:resource="#leaf"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf></rdfs:subClassOf>
+  <rdfs:comment>Giraffes ar herbivores that eat only leaves</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#lion">
+  <rdfs:subClassOf rdf:resource="#carnivore"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#eats"/>
+      <owl:allValuesFrom rdf:resource="#herbivore"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf></rdfs:subClassOf>
+  <rdfs:comment>Lions are animals that eat only herbivore animals</rdfs:comment>
+</owl:Class>
+
+<branch rdf:about="#Brabranche">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</branch>
+
+<giraffe rdf:about="#Gigi">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <size rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.8</size>
+  <weight rdf:datatype="http://www.w3.org/2001/XMLSchema#float">800.0</weight>
+</giraffe>
+
+<giraffe rdf:about="#Giginou">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <size rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</size>
+  <weight rdf:datatype="http://www.w3.org/2001/XMLSchema#float">735.0</weight>
+</giraffe>
+
+<lion rdf:about="#Léo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <eats rdf:resource="#Gigi"/>
+  <size rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.25</size>
+  <weight rdf:datatype="http://www.w3.org/2001/XMLSchema#float">190.0</weight>
+</lion>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Gigi"/>
+    <rdf:Description rdf:about="#Giginou"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+<owl:allValuesFrom/>
+
+<owl:unionOf>
+  <owl:Class></owl:Class>
+  <rdf:parsetype>Collection</rdf:parsetype>
+</owl:unionOf>
+
+<owl:onProperty/>
+
+
+</rdf:RDF>
