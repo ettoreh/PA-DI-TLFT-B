@@ -14,14 +14,14 @@ class Report():
             self.id[0], self.id[1]
         )
         self.maps = "https://www.google.com/maps/place/{}".format(self.id[0])
-        
+
         self.report = self.find_data()
-        
+
         pass
-    
+
     def redirect_to_website(self):
         return self.link
-    
+
     def find_data(self, days=1, intervalHours=3):
         params = {
             "spotId": self.id[1],
@@ -31,7 +31,7 @@ class Report():
         report = SurfReport(params)
         report.api_log
         return report
-    
+
     def get_sunLights(self):
         sunlight = self.report.get_dataframe("sunlightTimes")
         return {
@@ -40,14 +40,14 @@ class Report():
                 "sunset": to_time(sunlight["sunset"].values[0]),
                 "dusk": to_time(sunlight["dusk"].values[0])
             }
-        
+
     def get_tides(self):
         tides = self.report.get_dataframe("tides")
         tides = tides.loc[tides.type != "NORMAL"]
         return {
             to_time(i): [row["type"], row["height"]] for i, row in tides.iterrows()
         }
-        
+
     def get_next_high_tide(self):
         tides = self.get_tides()
         tides = {k: v for k, v in tides.items() if v[0]=="HIGH"}
@@ -55,8 +55,8 @@ class Report():
         for h, v in tides.items():
             if h > now:
                 return (h, v[1])
-        return None 
-    
+        return None
+
     def get_next_low_tide(self):
         tides = self.get_tides()
         tides = {k: v for k, v in tides.items() if v[0]=="LOW"}
@@ -64,8 +64,8 @@ class Report():
         for h, v in tides.items():
             if h > now:
                 return (h, v[1])
-        return None 
-    
+        return None
+
     def get_weather_data(self):
         data = self.report.get_dataframe('weather')
         return {
@@ -74,7 +74,7 @@ class Report():
                 "condition": row["condition"]
             } for i, row in data.iterrows()
         }
-        
+
     def get_wind_data(self):
         data = self.report.get_dataframe('wind')
         return {
@@ -86,7 +86,7 @@ class Report():
                 "optimalScore": row["optimalScore"]
             } for i, row in data.iterrows()
         }
-    
+
     def get_wave_data(self):
         data = self.report.get_dataframe('wave')
         return {
@@ -97,7 +97,7 @@ class Report():
                 "humanRelation": row["surf_humanRelation"]
             } for i, row in data.iterrows()
         }
-        
+
     def get_swell_data(self):
         data = self.report.get_dataframe('wave')
         return {
@@ -108,7 +108,7 @@ class Report():
                 "optimalScore": row["swells"][0]["optimalScore"]
             } for i, row in data.iterrows()
         }
-        
+
     def get_report(self, report_type):
         data = {
             "weather": self.get_weather_data(),
@@ -120,26 +120,25 @@ class Report():
         for h, v in data.items():
             if h > now:
                 return v
-        return None 
-    
-        
+        return None
+
+
 
 if __name__=="__main__":
     from spots import Spot, Spots
-    
+
     spots = Spots()
     spot = Spot(place='Trestraou')
     print(spots.check_place(spot))
     print(spot)
-    
+
     report = Report(spot, spots)
     print(report.redirect_to_website())
-    
+
     # print(report.get_sunLight())
     # print(report.get_tides())
     print(report.get_next_high_tide())
     print(report.get_next_low_tide())
-    
+
     print(report.get_report("weather"))
     print(report.get_report("wave"))
-    
