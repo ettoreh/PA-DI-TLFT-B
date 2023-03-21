@@ -4,7 +4,7 @@ from flask import Flask, request, make_response, jsonify
 from content.surfline.Spots import Spots
 from content.surfline.report.tides import get_tides
 from content.surfline.report.sunlights import get_sunlights
-from content.surfline.report.reports import get_small_report
+from content.surfline.report.reports import get_small_report, get_full_report
 from content.surfline.spot import get_spot_suggestions
 
 
@@ -39,8 +39,11 @@ def results():
         
     elif intent[:5] == "spots":
         return get_spot_suggestions(req, spots)
+    
+    elif intent == "report":
+        return get_full_report(req, spots)
         
-    return "TO DO"
+    return None
 
 
 # create a route for webhook
