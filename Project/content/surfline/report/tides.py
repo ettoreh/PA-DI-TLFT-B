@@ -8,37 +8,37 @@ def get_tides(request, spots):
     substate = request.get('queryResult').get('parameters').get("geo-sub-state")
     state = request.get('queryResult').get('parameters').get("geo-state")
     country = request.get('queryResult').get('parameters').get("geo-country")
-    
+
     spot = Spot(place=city, subregion=substate, region=state, country=country)
     value = spots.check_place(spot)
     print(report_type, date, city, substate, state, country)
-    
+
     if value:
         messages = []
-        text = "so, i m getting the tide, today in {}".format(spot)
+        text = f"so, i m getting the tide, today in {spot}"
         messages.append({"text": {"text": [text]}})
         tides = Report(spot, spots)
         high = tides.get_next_high_tide()
         low = tides.get_next_low_tide()
         if high:
             print(high)
-            high_tides = "the next high tide is {}, {}m".format(high[0], high[1])
+            high_tides = f"the next high tide is {high[0]}, {high[1]}m"
             messages.append({"text": {"text": [high_tides]}})
         if low:
             print(low)
-            low_tides = "the next low tide is {}, {}m".format(low[0], low[1])
+            low_tides = f"the next low tide is {low[0]}, {low[1]}m"
             messages.append({"text": {"text": [low_tides]}})
-        
+
         if len(messages) == 1:
             text = "it is already too late, come back tomorrow"
             messages = [{"text": {"text": [text]}}]
-        
+
         return {
-            "fulfillmentText": text, 
+            "fulfillmentText": text,
             "fulfillmentMessages": messages
         }
-    
+
     text = "i didn't find your spot.. can you be more precise or look at the list"
     return {
-        "fulfillmentText": text, 
+        "fulfillmentText": text,
     }

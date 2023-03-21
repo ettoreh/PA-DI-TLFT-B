@@ -26,17 +26,17 @@ def results():
     # fetch action from json
     intent = req.get('queryResult').get("intent").get("displayName")
     print(intent)
-    
+
     if intent == "tasks":
         report_type = req.get('queryResult').get('parameters').get("type")
         if report_type == "tides":
             return get_tides(req, spots)
         elif report_type == "sunlight":
             return get_sunlights(req, spots)
-        
+
     elif intent[:5] == "spots":
         return get_spot_suggestions(req, spots)
-        
+
     return "TO DO"
 
 
@@ -48,4 +48,4 @@ def webhook():
 
 # run the app
 if __name__ == '__main__':
-   app.run(debug=True)
+    app.run(debug=True)
