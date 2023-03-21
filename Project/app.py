@@ -4,6 +4,7 @@ from flask import Flask, request, make_response, jsonify
 from content.surfline.Spots import Spots
 from content.surfline.report.tides import get_tides
 from content.surfline.report.sunlights import get_sunlights
+from content.surfline.report.reports import get_small_report
 from content.surfline.spot import get_spot_suggestions
 
 
@@ -33,6 +34,8 @@ def results():
             return get_tides(req, spots)
         elif report_type == "sunlight":
             return get_sunlights(req, spots)
+        else:
+            return get_small_report(req, spots, report_type)
         
     elif intent[:5] == "spots":
         return get_spot_suggestions(req, spots)
