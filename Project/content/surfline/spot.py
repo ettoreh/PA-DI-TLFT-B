@@ -5,7 +5,7 @@ from .report.Report import Report
 
 def _generate_suggestions(values, type=['country', 'region']):
     if values:
-        text = "please choose on {} out of those:".format(type[1])
+        text = f"please choose on {type[1]} out of those:"
         messages = [
             {"text": {"text": [text]}}
         ]
@@ -18,7 +18,7 @@ def _generate_suggestions(values, type=['country', 'region']):
                 }
 
     else:
-        text = "i didn't find this {}.. choose one in the list".format(type[0])
+        text = f"i didn't find this {type[0]}.. choose one in the list"
         return {
                 "fulfillmentText": text,
         }
